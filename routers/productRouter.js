@@ -17,9 +17,9 @@ productRouter.get(
         categoria: 1,
         preciousd: 1,
         marca: 1,
-        modelo: 1,
+        modelo: 1, // Asegurarse de que modelo esté aquí
         color: 1,
-        genero: 1,
+        genero: 1, // Asegurarse de que genero esté aquí
         tallas: 1,
         imageurl: 1,
         existencia: 1,
