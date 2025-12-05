@@ -72,7 +72,11 @@ export default function MetodoPago({ onCancel, onSave, totalOrden, totalOrdenBs 
   const handleAddPago = () => {
     // Validaciones básicas
     if (!metodo || !monto || parseFloat(monto) <= 0) {
-      Swal.fire("Atención", "Debe seleccionar un método de pago y verificar el monto pagado", "warning");
+      Swal.fire(
+        "Verifique el Monto Pagado",
+        "Debe seleccionar un método de pago y Hacer click en el boton del monto",
+        "warning"
+      );
       return;
     }
 
@@ -199,17 +203,25 @@ export default function MetodoPago({ onCancel, onSave, totalOrden, totalOrdenBs 
             </div>
             <div className="form-group">
               <label>Monto ({simboloMoneda})</label>
-              <div className="input-with-button">
+              <div className="input-with-button" style={{ position: "relative" }}>
                 <input
                   type="number"
                   value={monto}
                   onChange={(e) => handleFieldChange("monto", e.target.value)}
                   placeholder={esPagoEnBolivares ? restanteBs.toFixed(2) : restante.toFixed(2)}
+                  style={{ paddingRight: "30px" }} // Añade espacio para el botón
                 />
                 <button
                   type="button"
                   className="link-like-btn"
                   title="Usar monto restante"
+                  style={{
+                    position: "absolute",
+                    right: "5px",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    height: "80%",
+                  }}
                   onClick={() => {
                     const montoRestante = esPagoEnBolivares ? restanteBs.toFixed(2) : restante.toFixed(2);
                     handleFieldChange("monto", montoRestante);
