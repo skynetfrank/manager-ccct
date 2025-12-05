@@ -98,6 +98,18 @@ function Facturacion() {
 
   const selectedVendedor = vendedores?.find((v) => v._id === vendedor);
 
+  // Efecto para establecer valores por defecto al montar el componente
+  useEffect(() => {
+    setVendedor("62ace90905009e9c1879c133");
+    setRif("V000000000");
+    setClienteInfo({
+      nombre: "CLIENTE1",
+      rif: "V000000000",
+      direccion: "CARACAS",
+      email: "",
+    });
+  }, [setVendedor, setRif, setClienteInfo]);
+
   // Efecto para limpiar los métodos de pago si la orden queda en cero.
   useEffect(() => {
     if (totalOrden === 0) {
