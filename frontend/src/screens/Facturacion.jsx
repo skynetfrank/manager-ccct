@@ -156,9 +156,9 @@ function Facturacion() {
     <div className="print-header-container">
       <img src={logo} alt="Logo Tienda" className="print-logo" />
       <div className="print-store-info" style={{ flexShrink: 0 }}>
-        <h4>DEMODA</h4>
+        <h4>DEMODA - CCCT</h4>
         <p>RIF: J-12345678-9</p>
-        <p>Almacen Principal</p>
+        <p>Inventario CCCT</p>
         <p>Facturacion Detal</p>
       </div>
     </div>
