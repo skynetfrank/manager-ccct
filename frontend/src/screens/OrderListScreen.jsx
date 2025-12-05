@@ -165,7 +165,6 @@ function OrderListScreen() {
                       <LucideArrowDown size={14} />
                     ))}
                 </th>
-                <th>Pagado</th>
                 <th>Acciones</th>
               </tr>
             </thead>
@@ -176,11 +175,6 @@ function OrderListScreen() {
                   <td>{dayjs(order.fecha).format("DD/MM/YYYY")}</td>
                   <td>{order.clienteInfo?.nombre.toUpperCase()}</td>
                   <td className="total-amount">${order?.totalVenta?.toFixed(2)}</td>
-                  <td>
-                    <span className={`status-badge ${order.isPaid ? "status-paid" : "status-pending"}`}>
-                      {order.isPaid ? "Pagado" : "Pendiente"}
-                    </span>
-                  </td>
 
                   <td>
                     <Tooltip text="Ver Detalles">
