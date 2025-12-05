@@ -30,34 +30,24 @@ const salesSection = [
   { to: "/facturacion", icon: <LucideBaggageClaim />, label: "Venta Detal", isPrimary: true },
   { to: "/enconstruccion", icon: <LucideTruck />, label: "Venta Mayor" },
   { to: "/verpedidos", icon: <LucideListTodo />, label: "Lista de Ventas" },
-  {
-    to: "/enconstruccion",
-    icon: <LucidePersonStanding />,
-    label: "Revendedores",
-    isExternal: true,
-  },
+  { to: "/verproductos", icon: <LucideBoxes />, label: "Productos" },
+  { to: "/crearproducto", icon: <LucideFilePlus />, label: "Crear Producto" },
+
+  { to: "/reporteclientes", icon: <LucideUsers />, label: "Clientes" },
 ];
 
 const inventorySection = [
   { to: "/verproductos", icon: <LucideBoxes />, label: "Productos" },
   { to: "/crearproducto", icon: <LucideFilePlus />, label: "Crear Producto" },
   { to: "/listaproductos", icon: <LucideBoxes />, label: "Lista Inventario" },
-  { to: "/enconstruccion", icon: <LucideFolderSearch />, label: "Búsqueda" },
-  { to: "/enconstruccion", icon: <LucideFileInput />, label: "Reposiciones" },
-  { to: "/enconstruccion", icon: <LucidePenTool />, label: "Ajustes" },
+
+  { to: "/reporteclientes", icon: <LucideUsers />, label: "Clientes" },
 ];
 
 const reportsSection = [
   { to: "/enconstruccion", icon: <LucideLayoutDashboard />, label: "Dashboard" },
   { to: "/enconstruccion", icon: <LucideClipboardCheck />, label: "Cuadre de Caja" },
   { to: "/enconstruccion", icon: <LucideCalculator />, label: "Gastos" },
-  { to: "/reporteclientes", icon: <LucideUsers />, label: "Clientes" },
-  { to: "/enconstruccion", icon: <LucideStar />, label: "Top 20" },
-  {
-    to: "/enconstruccion",
-    children: <img className="cashea-img-home" src={casheaimg} alt="cashea" />,
-    label: "Reporte Cashea",
-  },
 ];
 
 const toolsSection = [
@@ -137,10 +127,8 @@ function HomeScreen() {
     <>
       <CambioMarquee />
       <div className="dashboard-container">
-        <DashboardSection title="Ventas y Pedidos" cards={salesSection} />
-        <DashboardSection title="Inventario" cards={inventorySection} />
-        <DashboardSection title="Reportes y Administración" cards={reportsSection} />
-        <DashboardSection title="Herramientas Externas" cards={toolsSection} />
+        <DashboardSection title="Ventas e Inventarios" cards={salesSection} />
+        <DashboardSection title="Herramientas Administrativas" cards={reportsSection} />
       </div>
     </>
   );
