@@ -1,5 +1,5 @@
 import { useState, useMemo, useReducer } from "react";
-import { LucideXSquare, LucidePlus, LucideTrash2, LucideSave, LucideWallet } from "lucide-react";
+import { LucideXSquare, LucidePlus, LucideTrash2, LucideSave, LucideWallet, LucideCheck } from "lucide-react";
 import Swal from "sweetalert2";
 
 // --- Estado inicial y reducer para el formulario de pago ---
@@ -72,7 +72,7 @@ export default function MetodoPago({ onCancel, onSave, totalOrden, totalOrdenBs 
   const handleAddPago = () => {
     // Validaciones básicas
     if (!metodo || !monto || parseFloat(monto) <= 0) {
-      Swal.fire("Atención", "Debe seleccionar un método de pago y un monto válido.", "warning");
+      Swal.fire("Atención", "Debe seleccionar un método de pago y verificar el monto pagado", "warning");
       return;
     }
 
@@ -215,7 +215,7 @@ export default function MetodoPago({ onCancel, onSave, totalOrden, totalOrdenBs 
                     handleFieldChange("monto", montoRestante);
                   }}
                 >
-                  <LucideWallet size={16} />
+                  <LucideCheck size={16} />
                 </button>
               </div>
             </div>
