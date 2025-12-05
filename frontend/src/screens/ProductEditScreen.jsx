@@ -55,21 +55,19 @@ export default function ProductEditScreen(props) {
 
   useEffect(() => {
     if (product) {
-      // Si 'product' es un array (del endpoint antiguo), toma el primer elemento. Si es un objeto, úsalo directamente.
-      const productObject = Array.isArray(product) ? product[0] : product;
       setProductData({
-        codigo: productObject.codigo || "",
-        categoria: productObject.categoria || "CALZADO",
-        marca: productObject.marca || "",
-        modelo: productObject.modelo || "",
-        color: productObject.color || "",
-        genero: productObject.genero || "",
-        preciousd: productObject.preciousd || "",
-        tipo: productObject.tipo || "",
-        tallas: productObject.tallas || {},
+        codigo: product.codigo || "",
+        categoria: product.categoria || "CALZADO",
+        marca: product.marca || "",
+        modelo: product.modelo || "",
+        color: product.color || "",
+        genero: product.genero || "",
+        preciousd: product.preciousd || "",
+        tipo: product.tipo || "",
+        tallas: product.tallas || {},
       });
-      setImageurl(productObject.imageurl || "");
-      setLocalUri(productObject.imageurl || null);
+      setImageurl(product.imageurl || "");
+      setLocalUri(product.imageurl || null);
     }
   }, [product]);
 

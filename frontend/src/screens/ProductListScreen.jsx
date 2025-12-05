@@ -170,7 +170,7 @@ export default function ProductListScreen() {
       {isLoading ? (
         <Loader txt="Actualizando Productos" />
       ) : (
-        <div>{data.length > 0 ? <TanstackTable data={data} columns={columns} /> : ""}</div>
+        <div>{data?.length > 0 ? <TanstackTable data={data} columns={columns} /> : ""}</div>
       )}
     </div>
   );

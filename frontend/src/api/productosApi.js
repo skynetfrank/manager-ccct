@@ -20,7 +20,7 @@ export const productosApi = createApi({
       providesTags: ["Product"],
     }),
     getProduct: builder.query({
-      query: (termino) => `/productos/buscar/${termino}`,
+      query: (id) => `/productos/${id}`,
     }),
     addProduct: builder.mutation({
       query: (newProduct) => ({
