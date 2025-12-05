@@ -46,7 +46,7 @@ function App() {
               <img className="img-logo" src={logo} alt="logo" />
             </Link>
             <div className="header-title-group">
-              <h2 className="title-manager">D'moda-Manager</h2>
+              <h2 className="title-manager">D'moda-CCCT</h2>
               <span className="negrita font-1 header-date">
                 caracas, {dayjs(hoy.toISOString()).format("DD-MM-YYYY")}
               </span>
