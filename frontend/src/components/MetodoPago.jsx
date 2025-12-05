@@ -52,8 +52,8 @@ export default function MetodoPago({ onCancel, onSave, totalOrden, totalOrdenBs 
   const cambioDia = useMemo(() => (totalOrden > 0 ? totalOrdenBs / totalOrden : 0), [totalOrden, totalOrdenBs]);
 
   // --- Lógica para mostrar campos condicionales ---
-  const necesitaReferencia = ["PAGOMOVIL", "TDB", "TDC", "ZELLE", "TRANSFERENCIA", "PAGOCASHEA"].includes(metodo);
-  const necesitaBancoOrigen = ["PAGOMOVIL", "TDB", "TDC", "TRANSFERENCIA"].includes(metodo);
+  const necesitaReferencia = false; // ["PAGOMOVIL", "TDB", "TDC", "ZELLE", "TRANSFERENCIA", "PAGOCASHEA"].includes(metodo);
+  const necesitaBancoOrigen = false; // ["PAGOMOVIL", "TDB", "TDC", "TRANSFERENCIA"].includes(metodo);
   const necesitaBancoDestino = ["PAGOMOVIL", "TDB", "TDC", "TRANSFERENCIA"].includes(metodo);
   const esPagoEnBolivares = metodosEnBolivares.includes(metodo);
 
@@ -102,7 +102,11 @@ export default function MetodoPago({ onCancel, onSave, totalOrden, totalOrdenBs 
       const montoEnUSD = montoNumerico / cambioDia;
 
       if (totalPagado + montoEnUSD > totalOrden + 0.001) {
-        Swal.fire("Monto Excedido", `El monto a pagar no puede ser mayor al restante. Restan: $${restante.toFixed(2)}`, "error");
+        Swal.fire(
+          "Monto Excedido",
+          `El monto a pagar no puede ser mayor al restante. Restan: $${restante.toFixed(2)}`,
+          "error"
+        );
         return;
       }
 
@@ -115,7 +119,11 @@ export default function MetodoPago({ onCancel, onSave, totalOrden, totalOrdenBs 
     } else {
       // Para DOLARES, EUROS, ZELLE
       if (totalPagado + montoNumerico > totalOrden + 0.001) {
-        Swal.fire("Monto Excedido", `El monto a pagar no puede ser mayor al restante. Restan: $${restante.toFixed(2)}`, "error");
+        Swal.fire(
+          "Monto Excedido",
+          `El monto a pagar no puede ser mayor al restante. Restan: $${restante.toFixed(2)}`,
+          "error"
+        );
         return;
       }
       nuevoPago = {
@@ -131,7 +139,7 @@ export default function MetodoPago({ onCancel, onSave, totalOrden, totalOrdenBs 
       ...(necesitaReferencia && referencia && { referencia }),
       ...(necesitaBancoOrigen && bancoOrigen && { bancoOrigen }),
       ...(necesitaBancoDestino && bancoDestino && { bancoDestino }),
-      ...(memo && { memo })
+      ...(memo && { memo }),
     });
 
     setPagos([...pagos, nuevoPago]);
@@ -273,7 +281,10 @@ export default function MetodoPago({ onCancel, onSave, totalOrden, totalOrdenBs 
               {pagos.map((pago, index) => (
                 <div key={index} className="payment-item">
                   <span>
-                    {pago.tipo}: <strong>{pago.moneda} {pago.monto.toFixed(2)}</strong>
+                    {pago.tipo}:{" "}
+                    <strong>
+                      {pago.moneda} {pago.monto.toFixed(2)}
+                    </strong>
                     {pago.referencia && ` (Ref: ${pago.referencia})`}
                   </span>
                   <LucideTrash2 className="delete-item-icon" onClick={() => handleRemovePago(index)} />
