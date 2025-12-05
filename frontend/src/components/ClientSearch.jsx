@@ -14,6 +14,9 @@ const ClientSearch = forwardRef(({ onClientFound, onNewClient, onCancel }, ref) 
         showCancelButton: true,
         confirmButtonText: "Buscar",
         cancelButtonText: "Cancelar",
+        inputAttributes: {
+          maxlength: 10,
+        },
         inputValidator: (value) => {
           if (!value) {
             return "Debe ingresar Cedula o RIF";
@@ -28,7 +31,7 @@ const ClientSearch = forwardRef(({ onClientFound, onNewClient, onCancel }, ref) 
               return "Formato de RIF incorrecto. Debe ser J o G seguido de 9 dígitos.";
             }
           } else if (isCedula) {
-            if (!/^[VE][0-9]{6,8}$/.test(id)) {
+            if (!/^[VE][0-9]{6,9}$/.test(id)) {
               return "Formato de Cédula incorrecto. Debe ser V o E seguido de 6 a 8 dígitos.";
             }
           } else {
